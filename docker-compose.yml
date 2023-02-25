@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    tty: true
+    volumes:
+      - type: bind #バインドマウントを指定
+        source: . #ホストのディレクトリを指定
+        target: /app #コンテナのディレクトリを指定
