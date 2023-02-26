@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: ./docker/node/Dockerfile
-    tty: true
+    tty: true #擬似端末(キーボードによる入力)をコンテナに結びつける設定
     volumes:
       - type: bind #バインドマウントを指定
-        source: . #ホストのディレクトリを指定
-        target: /app #コンテナのディレクトリを指定
+        source: ./www/html #ホストのディレクトリを指定
+        target: /www/html #コンテナのディレクトリを指定
