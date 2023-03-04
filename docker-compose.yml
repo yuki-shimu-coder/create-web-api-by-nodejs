@@ -5,8 +5,37 @@ services:
     build:
       context: .
       dockerfile: ./docker/node/Dockerfile
+    ports:
+      - 8080:8080
+    working_dir: /www/html #作業ディレクトリを指定
     tty: true #擬似端末(キーボードによる入力)をコンテナに結びつける設定
+    user: "${UID}:${GID}" #実行ユーザーとグループを指定する
     volumes:
       - type: bind #バインドマウントを指定
         source: ./www/html #ホストのディレクトリを指定
         target: /www/html #コンテナのディレクトリを指定
+    networks:
+      - app-network
+    depends_on:
+      - mongodb #サービス間の依存関係を示す。appの前にdbを開始する。
+  mongodb:
+    container_name: mongodb
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    volumes:
+      - type: bind
+        source: ./data/db
+        target: /data/db
+    environment: #コンテナ内での環境変数を指定
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    command:
+      - mongod #MongoDBを起動する
+    networks:
+      - app-network
+
+networks: 
+  app-network:
+    external: true #trueで Compose が管理していない Docker ネットワークを利用する

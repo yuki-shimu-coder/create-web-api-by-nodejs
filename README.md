@@ -19,10 +19,30 @@ node.jsでwebAPIを作ってみる
 
 - .env
   DBのユーザー情報等を記述するファイル
-- db-data
+- data/db
   MongoDBのデータが消えないように保存しておくディレクトリ  
-- /www/htlm/app
+- www/htlm/app
   公開ディレクトリ
 
+## 開発の手順
+
+サンプル：laravel-projectディレクトリ内で、.envファイルを作成してください
+
+```
+  サンプル：cp .env.example .env  
+```
 
 
+
+## 注意事項
+コンテナへのアクセス
+
+```
+docker compose exec app /bin/sh
+```
+
+コンテナの起動で network app-network declared as external, but could not be found が表示されたら以下コマンドで、docker networkを作成しておく
+
+```
+docker network create app-network
+```
