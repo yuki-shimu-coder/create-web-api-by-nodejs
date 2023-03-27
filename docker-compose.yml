@@ -11,7 +11,7 @@ services:
     tty: true
     user: "${UID}:${GID}"
     volumes:
-      - /etc/passwd:/etc/passwd:ro
+      - /etc/passwd:/etc/passwd:ro #ホスト側のpasswd, groupファイルをNode.jsコンテナに読取専用でマウント。これで内外のユーザで作成したファイルに対してのアクセスでPermisson deniedが出ないようにしている
       - /etc/group:/etc/group:ro
       - ./user:/home/${APP_USER}
       - ./src:/home/app
@@ -19,7 +19,7 @@ services:
     command: bash
     #command: node index.js
     networks:
-      - app-network
+      - app-network #Node.jsからMongoDBにアクセスできるように、専用の仮想ネットワークapp-networkでつながるようにしている
     depends_on:
       - mongo
   mongo:
@@ -37,7 +37,7 @@ services:
     command:
       - mongod
     networks:
-      - app-network
+      - app-network #Node.jsからMongoDBにアクセスできるように、専用の仮想ネットワークapp-networkでつながるようにしている
 networks:
   app-network:
     external: true
