@@ -1,4 +1,5 @@
 .env
+data/
 
 # Dependency directories
 node_modules/

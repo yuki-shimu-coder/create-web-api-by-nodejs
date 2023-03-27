@@ -80,8 +80,6 @@ MongoDB server version: 4.2.5
 db.createCollection('persons');
 ```
 
-- おそらくここまでで、環境構築はできた。
-
 #### テスト用のデータ（ドキュメント）を追加する
 
 ```
@@ -100,7 +98,7 @@ docker compose exec app bash
 node connect.js 
 ```
 
-実行に成功した場合、以下コメントが表示される
+実行に成功した場合、以下コメントが表示される。接続が確認できたら環境構築完了。
 
 ```
 Connected successfully to server
@@ -128,7 +126,11 @@ done.
   - https://www.mongodb.com/docs/drivers/
 
 - MongoDB NodeJS ドライバー
-  - https://www.npmjs.com/package/mongodb
+  - https://www.npmjs.com/package/mongodb  npm公式
+  - https://kennejs.com/entry/nodejs-mongodb  MongoDB Node.JS Driverの紹介記事
+
+- MongoDBデータ操作
+  - https://www.wakuwakubank.com/posts/784-server-mongodb-introduction/#index_id13
 
 ## 注意事項
 
