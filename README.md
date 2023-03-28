@@ -17,21 +17,14 @@ node.js で webAPI を作ってみる
 - .env
   DB のユーザー情報等を記述するファイル
 
-- mongo -u test
-  ユーザー ID とパスワードを指定して MongoDB に接続する
-  ユーザー名とパスワード名は.env を参照してください。
-
-- MongoDB にパスワードを設定する方法
-  https://blog.bagooon.com/?p=1670
-
 <!-- これ不要な気がする、なぜなら上記コマンドで接続と認証が住んでいると思われるから -->
 <!-- - ユーザー認証
   db.auth("admin","password");
   mongoコマンドを上記の通り実行したあと、mongoシェルの中で認証を行う。 -->
-
+<!-- 
 - example テーブルの操作可能ユーザー
   - user: user1
-  - pwd: password
+  - pwd: password -->
 
 ## 開発の手順
 
@@ -130,7 +123,8 @@ done.
 
 #### 参考サイト様
 
-- https://www.usagi1975.com/202005161352/
+- 環境構築の大枠を参考にさせていただきました
+  - https://www.usagi1975.com/202005161352/
 
 - Docker 公式 MongoDB にパスワードを設定する方法
 
