@@ -22,6 +22,8 @@ services:
       - app-network #Node.jsからMongoDBにアクセスできるように、専用の仮想ネットワークapp-networkでつながるようにしている
     depends_on:
       - mongo
+    environment:
+      TZ: Asia/Tokyo
   mongo:
     image: mongo:4.2.5-bionic
     container_name: container2

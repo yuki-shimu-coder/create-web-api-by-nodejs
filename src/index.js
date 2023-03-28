@@ -2,7 +2,7 @@
 const dayjs = require('dayjs');
 
 console.log('Hello nodemon');
-console.log(dayjs('2023-03-12').format('YYYY年M月D日'));
+console.log(dayjs(new Date()).format('YYYY年M月D日'));
 
 
 const express = require('express')
@@ -11,4 +11,6 @@ const port = 8080
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+//8080番ポートでサーバーを待ちの状態にする。
+//またサーバーが起動したことがわかるようにログを出力する
+app.listen(port, () => console.log(`サーバー起動中 ポート番号：${port}`))
