@@ -5,7 +5,8 @@
   "main": "test-mongo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "practice": "nodemon practice.js"
   },
   "author": "",
   "license": "ISC",
