@@ -1,31 +1,22 @@
 // ルーターファイル
 const express = require('express')
 const router = express.Router()
+const { getAllTasks, getSingleTask, updateTask, deleteTask, insertTask } = require('../controllers/tasks')
 
 // 全タスクの取得
-router.get('/', (req, res) => {
-  res.send('タスクを全て取得しました')
-})
+router.get('/', getAllTasks)
 
 // 特定のタスクの取得
-router.get('/:id', (req, res) => {
-  res.send('ある特定のタスクを取得しました')
-})
+router.get('/:id', getSingleTask)
 
 // 特定のタスクの更新
-router.patch('/:id', (req, res) => {
-  res.send('ある特定のタスクを更新しました')
-})
+router.patch('/:id', updateTask)
 
 // 特定のタスクを削除
-router.delete('/:id', (req, res) => {
-  res.send('ある特定のタスクを削除しました')
-})
+router.delete('/:id', deleteTask)
 
 // タスクの追加
-router.post('/', (req, res) => {
-  res.send('タスクを新規作成しました')
-})
+router.post('/', insertTask)
 
 // ほかファイルでも読み込めるようにexport
 module.exports = router

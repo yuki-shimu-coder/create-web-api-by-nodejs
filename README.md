@@ -13,7 +13,10 @@ node.js で webAPI を作ってみる
 - data/db
   MongoDB のデータが消えないように保存しておくディレクトリ  
 - src 公開ディレクトリ
+  - controllers 各ルートに対応したメソッドを定義
+    - xxxxx.js xxxxxはルート名を記述
   - routes ルーターファイルを配置するディレクトリ
+    - xxxxx.js xxxxxはルート名を記述
 - .env
   DB のユーザー情報等を記述するファイル
 
