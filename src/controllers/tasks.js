@@ -21,8 +21,8 @@ const deleteTask = (req, res) => {
 }
 
 // タスクの追加
-const insertTask = (req, res) => {
+const createTask = (req, res) => {
   res.send('タスクを新規作成しました')
 }
 
-module.exports = { getAllTasks, getSingleTask, updateTask, deleteTask, insertTask }
+module.exports = { getAllTasks, getSingleTask, updateTask, deleteTask, createTask }

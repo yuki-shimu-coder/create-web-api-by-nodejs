@@ -1,7 +1,7 @@
 // ルーターファイル
 const express = require('express')
 const router = express.Router()
-const { getAllTasks, getSingleTask, updateTask, deleteTask, insertTask } = require('../controllers/tasks')
+const { getAllTasks, getSingleTask, updateTask, deleteTask, createTask } = require('../controllers/tasks')
 
 // 全タスクの取得
 router.get('/', getAllTasks)
@@ -16,7 +16,7 @@ router.patch('/:id', updateTask)
 router.delete('/:id', deleteTask)
 
 // タスクの追加
-router.post('/', insertTask)
+router.post('/', createTask)
 
 // ほかファイルでも読み込めるようにexport
 module.exports = router
