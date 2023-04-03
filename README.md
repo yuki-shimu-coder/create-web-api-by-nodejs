@@ -139,7 +139,7 @@ done.
 
 - 接続文字列の URI 形式
 
-  - https://www.mongodb.com/docs/drivers/
+  - https://www.mongodb.com/docs/manual/reference/connection-string/
 
 - MongoDB NodeJS ドライバー
 

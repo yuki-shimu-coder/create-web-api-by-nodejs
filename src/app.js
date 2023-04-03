@@ -5,6 +5,8 @@ const connectDB = require('./mongoose-connect')
 const port = 8080
 const url = 'mongodb://test:pass@mongo:27017/' // DB接続URL
 
+// json形式を利用することを明示する
+app.use(express.json())
 /**
  * ルーティング設計
  * 第一引数にエンドポイントの共通部分を指定
