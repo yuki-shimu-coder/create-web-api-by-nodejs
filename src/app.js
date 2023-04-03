@@ -3,7 +3,7 @@ const app = express()
 const taskRoute = require('./routes/tasks')
 const connectDB = require('./mongoose-connect')
 const port = 8080
-const url = 'mongodb://test:pass@mongo:27017/';
+const url = 'mongodb://test:pass@mongo:27017/' // DB接続URL
 
 /**
  * ルーティング設計
@@ -17,10 +17,10 @@ app.use("/api/v1/tasks", taskRoute)
  */
 const start = async (url) => {
   try {
-    await connectDB(url);
+    await connectDB(url)
 
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
