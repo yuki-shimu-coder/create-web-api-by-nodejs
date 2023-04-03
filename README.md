@@ -149,6 +149,10 @@ done.
 - MongoDB データ操作
   - https://www.wakuwakubank.com/posts/784-server-mongodb-introduction/#index_id13
 
+- mongoose公式ドキュメント
+  - https://mongoosejs.com/docs/index.html
+  - MongoDBをより簡単に使用できるようにする機能を提供
+
 ### Web サーバーの起動方法
 
 #### nodejs のコンテナにアクセスする
