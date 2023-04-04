@@ -2,8 +2,13 @@
 const Task = require('../models/Task')
 
 // 全タスクの取得
-const getAllTasks = (req, res) => {
-  res.send('タスクを全て取得しました')
+const getAllTasks = async (req, res) => {
+  try {
+    const allTask = await Task.find({})
+    res.status(200).json(allTask)
+  } catch (error) {
+    res.status(500).json(err)
+  }
 }
 
 // 特定のタスクの取得
@@ -29,7 +34,7 @@ const createTask = async (req, res) => {
 
     // res.status(200)は、HTTPレスポンスのステータスコードを200 OKに設定。
     // .json(createTask)は、createTaskオブジェクトをJSON形式に変換し、HTTPレスポンスの本文として返却。
-    res.status(200).json(createTask) 
+    res.status(200).json(createTask)
   } catch (error) {
     res.status(500).json(err)
   }
