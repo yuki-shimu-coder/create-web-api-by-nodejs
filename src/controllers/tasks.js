@@ -39,9 +39,6 @@ const getSingleTask = async (req, res) => {
 
 // 特定のタスクの更新
 const updateTask = async (req, res) => {
-  // アルゴリズムをここに追加する
-
-  // UPDATEに関連するメソッドがあるか？おそらく引数はIDだと思われる。
   try {
     // リクエストされたidが正しい形式なのかバリデーションチェック
     if (mongoose.isValidObjectId(req.params.id)) {
@@ -74,8 +71,29 @@ const updateTask = async (req, res) => {
 }
 
 // 特定のタスクを削除
-const deleteTask = (req, res) => {
-  res.send('ある特定のタスクを削除しました')
+const deleteTask = async (req, res) => {
+  try {
+    // リクエストされたidが正しい形式なのかバリデーションチェック
+    if (mongoose.isValidObjectId(req.params.id)) {
+      const deleteTask = await Task.findByIdAndDelete(req.params.id).exec()
+
+      // 　リクエストされたidが存在しなければエラーレスポンス
+      if (!deleteTask) {
+        return res.status(404).json(`_id:${req.params.id}は存在しません`);
+      }
+      res.status(200).json(deleteTask)
+
+      // 形式が正しくなければエラーレスポンス
+    } else {
+      console.log('タスクの削除に失敗');
+      console.log(`リクエストされたid[${req.params.id}]の形式が正しくありません`);
+      res.status(400).json(`リクエストされたid[${req.params.id}]の形式が正しくありません`)
+    }
+  } catch (error) {
+    console.log("error", error)
+    res.status(500).json(error)
+  }
+
 }
 
 // タスクの追加
