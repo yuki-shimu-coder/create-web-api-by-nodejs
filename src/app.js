@@ -7,6 +7,10 @@ const url = 'mongodb://test:pass@mongo:27017/' // DB接続URL
 
 // json形式を利用することを明示する
 app.use(express.json())
+
+// 静的ファイルの利用を宣言
+app.use(express.static('./public'))
+
 /**
  * ルーティング設計
  * 第一引数にエンドポイントの共通部分を指定
