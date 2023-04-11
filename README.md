@@ -15,6 +15,10 @@ node.js で webAPI を作ってみる
 - src 公開ディレクトリ
   - controllers 各ルートに対応したメソッドを定義
     - xxxxx.js xxxxxはルート名を記述
+  - models
+    - スキーマを定義。データ構造等を記述する。
+  - public
+    - html, css, jsファイルを格納
   - routes ルーターファイルを配置するディレクトリ
     - xxxxx.js xxxxxはルート名を記述
 - .env
