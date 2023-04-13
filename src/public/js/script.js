@@ -47,6 +47,8 @@ const showTasks = async () => {
     // ここで削除ボタンに対するイベントリスナーを設定する（htmlの挿入後にDOMを取得できる）
     tasksDOM.querySelectorAll('.delete-btn').forEach(deleteBtn => {
       deleteBtn.addEventListener('click', async (event) => {
+        // 削除時にフォームメッセージを削除
+        formAlertDOM.innerHTML = ''
         // クリックされた要素から見て、クラス名が.single-taskの祖先要素を取得。その祖先要素に設定されているdata-idを取得。
         const taskId = event.target.closest('.single-task').dataset.id;
         try {
