@@ -7,7 +7,10 @@ const tasksDOM = document.getElementById('tasks')
 const formDOM = document.getElementById('task-form')
 
 // テキストボックスのDOMを取得する
-const inputTask = document.getElementById('task-input')
+const inputTaskDOM = document.getElementById('task-input')
+
+// メッセージ表示DOMを取得する
+const formAlertDOM = document.getElementById('form-alert')
 
 // /api/v1/tasksから全タスクを取得する
 const showTasks = async () => {
@@ -72,16 +75,24 @@ formDOM.addEventListener('submit', async (event) => {
   // POSTするdataを用意する
   const data = {
     // nameは、データスキーマ構造の名前
-    name: inputTask.value
+    name: inputTaskDOM.value
   }
   try {
     // 入力されたタスクをjson形式でエンドポイントに投げる
     await axios.post('/api/v1/tasks', data)
     // post後テキストボックスの中身を空にする
-    inputTask.value = ''
+    inputTaskDOM.value = ''
+    // タスクが正常に追加されたことをformAlertDOMで表示する
+    formAlertDOM.classList.add("text-success")
+    formAlertDOM.innerHTML = 'タスクが追加されました'
     // 追加処理が終了したらshowTaskを実行する
     showTasks()
   } catch (error) {
     console.log(error);
+    // エラーメッセージを取得
+    const errorMsg = error.response.data.errors.name.message
+   // エラーメッセージをformAlertDOMで表示する
+    formAlertDOM.classList.remove("text-success")
+    formAlertDOM.innerHTML = errorMsg
   }
 })
