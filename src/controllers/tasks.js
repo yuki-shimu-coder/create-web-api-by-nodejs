@@ -48,7 +48,9 @@ const updateTask = async (req, res) => {
         // 第3引数でオプションを設定
         {
           // 更新が適用された後のドキュメントが返却されるように設定
-          new: true
+          new: true,
+          // バリデーションを実行する。この設定を指定しないと、スキーマ定義のバリデーションが実行されない。
+          runValidators: true
         }
       ).exec()
 
