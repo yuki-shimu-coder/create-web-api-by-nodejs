@@ -27,15 +27,6 @@ node.js で webAPI を作ってみる
 - .env
   DB のユーザー情報等を記述するファイル
 
-<!-- これ不要な気がする、なぜなら上記コマンドで接続と認証が住んでいると思われるから -->
-<!-- - ユーザー認証
-  db.auth("admin","password");
-  mongoコマンドを上記の通り実行したあと、mongoシェルの中で認証を行う。 -->
-<!-- 
-- example テーブルの操作可能ユーザー
-  - user: user1
-  - pwd: password -->
-
 ## 開発の手順
 
 ### .env ファイルを作成
@@ -43,7 +34,7 @@ node.js で webAPI を作ってみる
 サンプル：laravel-project ディレクトリ内で、.env ファイルを作成してください
 
 ```
-  サンプル：cp .env.example .env
+cp .env.example .env
 ```
 
 ### 必要なパッケージのインストール
