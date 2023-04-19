@@ -19,6 +19,9 @@ node.js で webAPI を作ってみる
     - スキーマを定義。データ構造等を記述する。
   - public
     - html, css, jsファイルを格納
+    - js
+      - script.js
+          - イベント処理、非同期処理等を記述
   - routes ルーターファイルを配置するディレクトリ
     - xxxxx.js xxxxxはルート名を記述
 - .env
@@ -56,7 +59,31 @@ npm install
   - ２回目以降、npm の操作が可能
   - https://qiita.com/tabimoba/items/c5467432d1a635f9ce5b
 
-### mongoDB にテストデータを用意する
+### Web サーバーの起動方法
+
+#### nodejs のコンテナにアクセスする
+
+```
+docker compose exec app bash
+```
+
+#### nodejs コンテナ内でターミナルより index.js を実行する(package.json の scripts > dev を参照)
+
+```
+npm run dev
+```
+
+### 注意事項
+
+### docker-compose で「network undefined」が表示される場合
+
+コンテナの起動で network app-network declared as external, but could not be found が表示されたら以下コマンドで、docker network を作成しておく
+
+```
+docker network create app-network
+```
+
+### ※参考　mongoDB にテストデータを用意する手順
 
 #### mongoDB のコンテナにアクセスする
 
@@ -156,27 +183,3 @@ done.
 - mongoose公式ドキュメント
   - https://mongoosejs.com/docs/index.html
   - MongoDBをより簡単に使用できるようにする機能を提供
-
-### Web サーバーの起動方法
-
-#### nodejs のコンテナにアクセスする
-
-```
-docker compose exec app bash
-```
-
-#### nodejs コンテナ内でターミナルより index.js を実行する(package.json の scripts > dev を参照)
-
-```
-npm run dev
-```
-
-## 注意事項
-
-### docker-compose で「network undefined」が表示される場合
-
-コンテナの起動で network app-network declared as external, but could not be found が表示されたら以下コマンドで、docker network を作成しておく
-
-```
-docker network create app-network
-```

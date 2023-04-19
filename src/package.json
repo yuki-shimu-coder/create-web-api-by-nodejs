@@ -5,7 +5,6 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "test": "nodemon test.js",
     "practice": "nodemon practice.js"
   },
   "author": "",
