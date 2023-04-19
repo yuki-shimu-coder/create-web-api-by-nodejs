@@ -30,9 +30,10 @@ const showTasks = async () => {
       return `
       <div class="single-task" data-id="${_id}">
         <div class="edit-wrapper">
-          <input type="text" placeholder="${name}" class="task-edit" />
+          <input type="text" value="${name}" class="task-edit" />
+          <input type="checkbox" class="task-condition" ${completed ? 'checked' : ''}>
           <button class="update-btn">更新</button>
-          <button class="edit-btn">閉じる</button>
+          <button class="edit-close-btn">閉じる</button>
           <h5><span><i class="fa-regular fa-circle-check ${completed ? '' : 'none'}"></i></span>${name}</h5>
           <div class="task-links">
             <!-- 編集リンク -->
@@ -71,26 +72,24 @@ const showTasks = async () => {
       editLink.addEventListener('click', (event) => {
         // 編集時にフォームメッセージを削除
         formAlertDOM.innerHTML = ''
-        // タスク編集テキストボックスを表示する
+        // タスク編集を表示
         const singleTaskDOM = event.target.closest('.single-task')
         singleTaskDOM.querySelector('.task-edit').classList.add('edit')
-        // 更新ボタンを表示する
+        singleTaskDOM.querySelector('.task-condition').classList.add('edit')
         singleTaskDOM.querySelector('.update-btn').classList.add('edit')
-        // 閉じるボタンを表示する
-        singleTaskDOM.querySelector('.edit-btn').classList.add('edit')
+        singleTaskDOM.querySelector('.edit-close-btn').classList.add('edit')
       });
     });
 
     // 閉じるボタンのイベントリスナーを設定する
-    tasksDOM.querySelectorAll('.edit-btn').forEach(editBtn => {
+    tasksDOM.querySelectorAll('.edit-close-btn').forEach(editBtn => {
       editBtn.addEventListener('click', (event) => {
         const singleTaskDOM = event.target.closest('.single-task')
-        // タスク編集テキストボックスを非表示にする
+        // タスク編集を非表示
         singleTaskDOM.querySelector('.task-edit').classList.remove('edit')
-        // 更新ボタンを非表示する
+        singleTaskDOM.querySelector('.task-condition').classList.remove('edit')
         singleTaskDOM.querySelector('.update-btn').classList.remove('edit')
-        // 閉じるボタンを非表示にする
-        singleTaskDOM.querySelector('.edit-btn').classList.remove('edit')
+        singleTaskDOM.querySelector('.edit-close-btn').classList.remove('edit')
       })
     })
 
@@ -99,17 +98,20 @@ const showTasks = async () => {
       updateBtn.addEventListener('click', async (event) => {
         // 更新時にフォームメッセージを削除
         formAlertDOM.innerHTML = ''
-        // クリックされた要素から見て、クラス名が.single-taskの祖先要素を取得。その祖先要素に設定されているdata-idを取得。
+        // クリックされた要素から見て、クラス名が.single-taskの祖先要素を取得。
         const singleTaskDOM = event.target.closest('.single-task')
+        // single-taskに設定されているdata-idを取得。
         const taskId = singleTaskDOM.dataset.id;
         const updateTaskDOM = singleTaskDOM.querySelector('.task-edit')
         const updateAlertDOM = singleTaskDOM.querySelector('.update-alert')
         const taskNameDOM = singleTaskDOM.querySelector('h5')
+        const taskConditionDOM = singleTaskDOM.querySelector('.task-condition')
 
         // PATCH用dataを用意する
         const data = {
           // nameは、データスキーマ構造の名前
-          name: updateTaskDOM.value
+          name: updateTaskDOM.value,
+          completed: taskConditionDOM.checked
         }
 
         try {
@@ -127,16 +129,12 @@ const showTasks = async () => {
           updateAlertDOM.classList.add("text-success")
           updateAlertDOM.innerHTML = 'タスクが更新されました'
 
-          // タスク編集テキストボックスを非表示にする
+          // タスク編集を非表示
           singleTaskDOM.querySelector('.task-edit').classList.remove('edit')
-          // 更新ボタンを非表示する
+          singleTaskDOM.querySelector('.task-condition').classList.remove('edit')
           singleTaskDOM.querySelector('.update-btn').classList.remove('edit')
-          // 閉じるボタンを非表示にする
-          singleTaskDOM.querySelector('.edit-btn').classList.remove('edit')
-          // inputの内容を更新
-          singleTaskDOM.querySelector('.task-edit').setAttribute('placeholder', name)
-          // テキストボックスの中身を空にする
-          updateTaskDOM.value = ''
+          singleTaskDOM.querySelector('.edit-close-btn').classList.remove('edit')
+          singleTaskDOM.querySelector('.task-edit').value = name
 
         } catch (error) {
           // エラーメッセージを取得

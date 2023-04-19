@@ -145,6 +145,22 @@ textarea {
 	gap: 1rem;
 }
 
+.task-condition {
+	position: absolute;
+	right: 0;
+	width: auto;
+	right: 280px;
+	display: none;
+}
+
+.task-condition.edit{
+	position: absolute;
+	right: 0;
+	width: auto;
+	right: 280px;
+	display: inline-block;
+}
+
 .single-task {
 	padding: 1rem 2.5rem;
 	background: var(--white);
@@ -170,7 +186,7 @@ textarea {
 	display: inline-block;
 }
 
-.edit-btn {
+.edit-close-btn {
 	cursor: pointer;
 	appearance: none;
 	color: var(--white);
@@ -187,7 +203,7 @@ textarea {
 	right: 100px;
 }
 
-.edit-btn.edit {
+.edit-close-btn.edit {
 	cursor: pointer;
 	appearance: none;
 	color: var(--white);
@@ -204,7 +220,7 @@ textarea {
 	right: 100px;
 }
 
-.edit-btn:hover {
+.edit-close-btn:hover {
 	color: var(--white);
 	background: var(--primary-400);
 	box-shadow: var(--shadow-2);
@@ -361,9 +377,11 @@ textarea {
 	opacity: 0.75;
 }
 
+.fa-regular.fa-circle-check {
+	color: var(--green-dark);
+}
 .fa-regular.fa-circle-check.none {
 	display: none;
-	color: var(--green-dark);
 }
 
 .u-mgt-20 {
