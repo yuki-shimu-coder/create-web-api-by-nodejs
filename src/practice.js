@@ -1,3 +1,7 @@
+/**
+ * APIサーバー起動練習用ファイル
+ */
+
 // 参考にさせていただきました:https://reffect.co.jp/node-js/first-time-express-js
 const dayjs = require('dayjs')
 

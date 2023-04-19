@@ -1,3 +1,7 @@
+/**
+ * 接続テスト用ファイル
+ */
+
 const { MongoClient } = require('mongodb');
 // or as an es module:
 // import { MongoClient } from 'mongodb'
