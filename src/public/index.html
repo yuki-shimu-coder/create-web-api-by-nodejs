@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MongoDB & Nodejs TODO APP</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <form action="" class="task-form" id="task-form">
+    <h4>TODOを追加する</h4>
+    <div class="form-control">
+      <input type="text" name="name" class="task-input" placeholder="タスクを追加してください" id="task-input" />
+      <button type="submit" class="btn submit-btn">送信</button>
+    </div>
+    <div class="form-alert" id="form-alert">
+
+    </div>
+  </form>
+
+  <section class="tasks-container">
+    <div class="tasks" id="tasks">
+      <!-- ここに取得したタスクが挿入される -->
+    </div>
+  </section>
+  <!-- ブラウザでaxiosを使用するには、CDNを利用して読み込む必要がある。 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

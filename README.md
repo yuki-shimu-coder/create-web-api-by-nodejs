@@ -12,8 +12,15 @@ node.js で webAPI を作ってみる
 
 - data/db
   MongoDB のデータが消えないように保存しておくディレクトリ  
-  -src
-  公開ディレクトリ
+- src 公開ディレクトリ
+  - controllers 各ルートに対応したメソッドを定義
+    - xxxxx.js xxxxxはルート名を記述
+  - models
+    - スキーマを定義。データ構造等を記述する。
+  - public
+    - html, css, jsファイルを格納
+  - routes ルーターファイルを配置するディレクトリ
+    - xxxxx.js xxxxxはルート名を記述
 - .env
   DB のユーザー情報等を記述するファイル
 
@@ -136,7 +143,7 @@ done.
 
 - 接続文字列の URI 形式
 
-  - https://www.mongodb.com/docs/drivers/
+  - https://www.mongodb.com/docs/manual/reference/connection-string/
 
 - MongoDB NodeJS ドライバー
 
@@ -145,6 +152,10 @@ done.
 
 - MongoDB データ操作
   - https://www.wakuwakubank.com/posts/784-server-mongodb-introduction/#index_id13
+
+- mongoose公式ドキュメント
+  - https://mongoosejs.com/docs/index.html
+  - MongoDBをより簡単に使用できるようにする機能を提供
 
 ### Web サーバーの起動方法
 
